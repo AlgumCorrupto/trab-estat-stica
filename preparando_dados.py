@@ -1,13 +1,21 @@
 import pandas as pd
 dados_brasil = pd.read_csv("dados.csv", sep=';', encoding='latin1')
-população_campos = dados_brasil[dados_brasil["NO_MUNICIPIO_ESC"].str.lower() == "campos dos goytacazes"]
+população_campos = dados_brasil[dados_brasil["NO_MUNICIPIO_PROVA"].str.strip().str.lower() == "campos dos goytacazes"]
 
 acertos_mt = []
 acertos_cn = []
 acertos_ch = []
 acertos_lc = []
 
-população_campos = população_campos.dropna()
+colunas_notas = [
+    "NU_NOTA_LC",
+    "NU_NOTA_CH",
+    "NU_NOTA_MT",
+    "NU_NOTA_CN",
+    "NU_NOTA_REDACAO",
+]
+
+população_campos = população_campos.dropna(subset=colunas_notas)
 
 for _, aluno in população_campos.iterrows():
     pegarAcertos = lambda respostas, gabarito: sum(1 for i in range(len(aluno[respostas])) if aluno[respostas][i] == aluno[gabarito][i])
