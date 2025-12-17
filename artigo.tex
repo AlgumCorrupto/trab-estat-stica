@@ -1,6 +1,12 @@
 \documentclass{article}
 
-\title{Análise sobre Enem 2024}
+\usepackage[left=3cm, right=2cm, top=3cm, bottom=2cm, margin=1.0cm]{geometry}
+\usepackage[12pt]{extsizes}
+\usepackage[brazil]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\title{Análise sobre o Enem 2024}
 
 \author{Paulo Artur Villaça}
 
@@ -8,50 +14,108 @@
 
 \begin{document}
 
+\maketitle
+
 \section*{Introdução}
 
-Esse documento tem como objetivo oferecer uma análise sobre a peformace dos alunos de Campos dos Goytacazes da prova do Enem em 2024.
-O documento tem como objetivo analisar.
+Este documento tem como objetivo apresentar uma análise do desempenho dos alunos de Campos dos Goytacazes no Exame Nacional do Ensino Médio (Enem) de 2024. O foco do trabalho é compreender aspectos quantitativos relacionados à participação e ao desempenho dos inscritos, com ênfase particular na prova de Matemática.
 
-- A quantidade de acertos dos alunos 
+A análise concentra-se nos seguintes pontos:
 
-- A notas dos alunos
+\begin{itemize}
+\item Presença dos alunos nos dias de prova;
+\item Quantidade de acertos na prova de Matemática;
+\item Notas obtidas na prova de Matemática.
+\end{itemize}
 
-- Presença dos alunos
+A análise referente à quantidade de acertos e às notas é realizada a partir de uma amostra composta apenas pelos inscritos que estiveram presentes tanto no primeiro quanto no segundo dia do exame. Já a análise de presença considera o conjunto total de inscritos no município.
 
-A análise da quantidade de acertos e notas será feita por uma amostra composta pelos alunos que fizeram as provas do primeiro e segundo dia, a análise sobre a presença será feita na população que se inscreveu no Enem de 2024 e fez a prova em campos.
+Dessa forma, a leitura deste artigo é significativamente enriquecida quando acompanhada da consulta direta ao \textit{Notebook} utilizado na análise, no qual estão detalhados os procedimentos computacionais, as visualizações gráficas e as etapas intermediárias dos cálculos. O \textit{Notebook} que contém a análise completa está disponível em \url{https://github.com/AlgumCorrupto/trab-estat-stica/blob/master/enem.ipynb}. Ressalta-se que a consulta a esse documento é indispensável, pois nele encontram-se todos os dados utilizados ao longo da análise.
+
+\pagebreak
 
 \section*{Análise}
 
 \subsection*{Presença}
 
-2188 Inscritos fizeram a prova em Campos dos Goytacazes enqunato 1520 dos inscritos fizeram ambas a provas, isso significa que aproximadamente 30.530\% dos alunos não fizeram as duas provas.  
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{presencas.png}
+    \caption{x = provas, y = número de presença}
+    \label{fig:presencas}
+\end{figure}
+
+
+Do total de 2188 pessoas inscritas para realizar o Enem em Campos dos Goytacazes, apenas 1520 estiveram presentes em ambos os dias de prova.
+Isso implica que aproximadamente $30{,}53\%$ dos inscritos não compareceram aos dois dias do exame, evidenciando uma taxa de ausência considerável.
+
+\pagebreak
 
 \subsection*{Sobre as Notas}
 
-As próximas duas seções do artigo analisam a peformace dos inscritos que fizeram todas as 4 provas do Enem 2024 (linguagens, ciências humanas, ciências naturais e matemática), com exceção da Redação e com ênfase na prova de matemática.
+As análises apresentadas nesta e na próxima subseção referem-se exclusivamente aos inscritos que realizaram as quatro provas objetivas do Enem 2024 (Linguagens, Ciências Humanas, Ciências da Natureza e Matemática), excluindo-se a Redação, e com ênfase especial na prova de Matemática.
 
-Em média a notas da prova de matemática dos inscritos foi 540 pontos, o que é esperado pois a INEP já leva em consideração a média de acertos dos alunos em consideração para determinar a sua nota, sua mediana é ainda mais próximo da metade da nota máxima possível, valendo aproximadamente 525.5.
+A nota média obtida na prova de Matemática foi de $\approx 540$ pontos. Esse valor é consistente com o método de correção adotado pelo INEP, que leva em consideração a distribuição geral de acertos dos participantes por meio da Teoria de Resposta ao Item (TRI). A mediana observada é ainda mais próxima do centro da escala, situando-se em torno de 525.5 pontos. A moda dessa distribuição localiza-se em 448 pontos.
 
-Sua amplitude é 552.0, com a menor nota sendo 373 e maior nota 925, com variação de aproximadamente 20.54\\% em relação a média.
+No entanto, esse mesmo padrão de centralidade não se mantém quando se analisam os quartis da distribuição:
+\begin{itemize}
+    \item Q1 = 412.75
+    \item Q3 = 629.0
+\end{itemize}
 
-A sua distribuição aparenta não ser uma distribuição normal perfeita.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{poligono-notas.png}
+    \caption{x = nota, y = frequência absoluta}
+    \label{fig:poligono-notas}
+\end{figure}
 
-% TODO: Colocar a foto da distribuição normal aqui
+A amplitude das notas foi de 552.0 pontos, com a menor nota registrada sendo 373 e a maior, 925 pontos. O coeficiente de variação foi de aproximadamente $20{,}54\%$, indicando uma dispersão moderada dos dados. O desvio padrão observado foi de cerca de $110{,}97$ pontos em relação à média.
 
-Uma peculiaridade encontrada é que o maior nota encontrada na prova de Linguagens durante a análise foi de 720 pontos.
+A distribuição das notas sugere um comportamento que não se aproxima perfeitamente de uma distribuição normal, apresentando assimetrias perceptíveis. O coeficiente de assimetria foi de aproximadamente $0{,}46$, indicando uma assimetria à direita. Além disso, o grau de curtose foi de aproximadamente $-0{,}61$, caracterizando uma distribuição platicúrtica.
+
+Uma peculiaridade observada durante a análise é que a maior nota registrada na prova de Linguagens foi de aproximadamente 720 pontos, valor consideravelmente inferior ao máximo observado na prova de Matemática.
+
+\pagebreak
 
 \subsection*{Sobre os Acertos}
 
-Em média, os inscritos acertaram 13 questões na prova de matemática, com maior frequência de acertos sendo 10 questões.
+Em média, os inscritos acertaram 13 questões na prova de Matemática, sendo a quantidade de acertos mais frequente igual a 10 questões,enquanto a mediana da distribuição foi de 12 acertos.
 
-Incrivelmente a menor quantidade de acertos não foi 0, mas sim 3 questões, com a maior quantidade de acertos sendo 43 de 45 questões. Em média, essa quantidade varia 48.4\%, que significa que essa sequência de dados tem uma alta dispersão.
+Observa-se que a menor quantidade de acertos registrada não foi zero, mas sim 3 questões, enquanto o maior número de acertos atingiu 43 das 45 questões da prova, resultando em uma amplitude de 40 questões. O coeficiente de variação dessa variável foi de aproximadamente 48.4\%, o que indica uma alta dispersão nos resultados, com um desvio padrão de aproximadamente $6{,}45$ questões em relação à média.
 
-O histograma da distribuição com 12 classes, temos esse plot.
+$75\%$ dos inscritos acertaram menos de 16 questões na prova de Matemática, enquanto apenas $10\%$ dos participantes acertaram mais de 22 questões.
 
-% TODO: Colocar foto da distrubuição normal aqui
+Seu coeficiente de assimetria é um valor positivo $\approx 1{,}30$, simbolizando uma distribuição assimétrica bastante acentuada para direita e com curtose de $\approx 2{,}18$, sendo classificada como uma distribuição leptocúrtica.
 
-Note-se que também foi incluido a distribuição das outras provas. A maior quantidade de acetos da prova de linguagens é menor que 25 acertos, isso significa que para um inscrito acertar 700 pontos, ele precisa acertar menos da metade do total de questões.
+O polígono de frequência da distribuição dos acertos, construído com 12 classes, é apresentado a seguir.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{poligono-acertos.png}
+    \caption{x = quantidade de acertos, y = frequência absoluta}
+    \label{fig:poligono-acertos}
+\end{figure}
+
+Observa-se ainda a inclusão das distribuições referentes às demais provas. Nota-se que o maior número de acertos na prova de Linguagens é inferior a 25 questões, o que sugere que um participante pode atingir uma nota em torno de 700 pontos mesmo acertando menos da metade do total de questões dessa prova.
+
+
+\pagebreak
+
+\section*{Referências}
+
+\begin{itemize}
+  \item \url{https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/enem}
+  -- Microdados do Enem
+
+  \item \url{https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem}
+  -- Informações institucionais sobre o Enem
+
+  \item \url{https://download.inep.gov.br/publicacoes/institucionais/avaliacoes_e_exames_da_educacao_basica/entenda_a_sua_nota_no_enem_guia_do_participante.pdf}
+  -- Guia explicativo oficial sobre cálculo de notas e TRI
+
+  \item \url{https://github.com/AlgumCorrupto/trab-estat-stica}
+  -- Análise pessoal
+\end{itemize}
 
 \end{document}
-
